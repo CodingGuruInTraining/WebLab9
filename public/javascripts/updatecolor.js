@@ -19,7 +19,19 @@ function addInput(element) {
 
     $('#newcolor').keypress(function (event) {
         if (event.which == 13) {
-            //TODO ajax request here
+            var color = $(this).val();
+            var name = $('#name').text();
+            var data = { "color": color, "name":name };
+
+            $.ajax({method:"PUT", data:data, url:'/updateColor'})
+                .done(function(result) {
+                    $('#editableColor').text(result.color);
+                    removeInput();
+                })
+                .fail(function(err){
+                    console.log(err);
+                    removeInput();
+                })
         }
     });
 }
