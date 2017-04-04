@@ -69,10 +69,17 @@ router.put('/updateColor', function(req, res, next) {
 
 
 router.post('/deleteFlower', function(req, res, next) {
+    // req.db.collection('flowers').remove( { "name" : req.body.name }, function(err) {
+    // req.db.collection('flowers').deleteOne({ "name":req.body.name}, function(err) {
     req.db.collection('flowers').deleteOne(req.body, function(err) {
+
+
+    // req.db.collection('flowers').deleteOne(req.body, function(err) {
         if (err) {
             return next(err);
         }
+        console.log("here we begin");
+        console.log(req.body);      // req.body = { secretName: [string name] }
         return res.redirect('/');
     })
 });
