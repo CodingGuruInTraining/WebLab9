@@ -68,7 +68,7 @@ router.put('/updateColor', function(req, res, next) {
 });
 
 
-router.delete('/deleteFlower', function(req, res, next) {
+router.post('/deleteFlower', function(req, res, next) {
     req.db.collection('flowers').deleteOne(req.body, function(err) {
         if (err) {
             return next(err);

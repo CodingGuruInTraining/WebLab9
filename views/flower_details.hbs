@@ -13,6 +13,13 @@
 <P>Visit this flower's page at Wikipedia at the following link:
 <a href="{{flower.wiki}}">{{flower.wiki}}</a></P>
 
+<div>
+    <form action="/deleteFlower" method="POST">
+        <button type="submit" id="delete">I am so done with this flower!</button>
+        <input type="hidden" name="secretName" value="{{flower.name}}">
+    </form>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
 <script src="/javascripts/updatecolor.js"></script>
