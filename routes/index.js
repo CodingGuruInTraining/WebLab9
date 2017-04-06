@@ -44,15 +44,20 @@ router.get('/details/:flower', function(req, res, next){
 });
 
 
-router.post('/addFlower', function(req, res, next){
-    req.db.collection('flowers').insertOne(req.body, function(err){
+router.post('/addFlower', function(req, res, next) {
+
+    req.db.collection(('flowers').find(req.body, function (err) {
         if (err) {
             return next(err);
         }
-        return res.redirect('/');
-    });
+        req.db.collection(('flowers').insertOne(req.body, function (err) {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect('/');
+        }))
+    }));
 });
-
 
 router.put('/updateColor', function(req, res, next) {
 
