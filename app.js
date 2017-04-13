@@ -15,6 +15,7 @@ var users = require('./routes/users');
 var app = express();
 
 var url = process.env.MONGO_URL;
+console.log(url);
 MongoClient.connect(url , function(err, db){
     {  assert.equal(null, err);
         console.log('connected to MongoDB');
