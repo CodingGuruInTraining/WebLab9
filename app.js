@@ -20,6 +20,7 @@ MongoClient.connect(url , function(err, db){
         console.log('connected to MongoDB');
 
 
+
     }
     app.use('/', function (req, res, next) {
         req.db = db;
