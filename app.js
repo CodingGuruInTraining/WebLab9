@@ -14,6 +14,7 @@ var users = require('./routes/users');
 
 var app = express();
 
+// var url = "mongodb://localhost:27017/garden";
 var url = process.env.MONGO_URL;
 console.log(url);
 MongoClient.connect(url , function(err, db){
