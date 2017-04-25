@@ -46,17 +46,17 @@ router.get('/details/:flower', function(req, res, next){
 
 router.post('/addFlower', function(req, res, next) {
 
-    req.db.collection(('flowers').findOne({'name' : req.body.name}, function (err, doc) {
+    req.db.collection('flowers').findOne({'name' : req.body.name}, function (err, doc) {
         if (doc) {
             return res.send("A flower of that variety already exists.")
         }
-        req.db.collection(('flowers').insertOne(req.body, function (err) {
+        req.db.collection('flowers').insertOne(req.body, function (err) {
             if (err) {
                 return next(err);
             }
             return res.redirect('/');
-        }))
-    }));
+        })
+    });
 });
 
 router.put('/updateColor', function(req, res, next) {
