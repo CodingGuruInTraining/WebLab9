@@ -46,7 +46,7 @@ router.get('/details/:flower', function(req, res, next){
 
 router.post('/addFlower', function(req, res, next) {
 
-    req.db.collection('flowers').findOne({'name' : req.body.name}, function (err, doc) {
+    req.db.collection('flowers').findOne({'name' : { $regex : new RegExp(req.body.name, "i")}}, function (err, doc) {
         if (doc) {
             return res.send("A flower of that variety already exists.")
         }
@@ -91,3 +91,7 @@ router.post('/deleteFlower', function(req, res, next) {
 
 
 module.exports = router;
+
+
+// help with case insensitive search:
+//     http://stackoverflow.com/questions/7101703/how-do-i-make-case-insensitive-queries-on-mongodb

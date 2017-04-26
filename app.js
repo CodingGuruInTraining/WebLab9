@@ -15,15 +15,12 @@ var users = require('./routes/users');
 var app = express();
 
 // var url = "mongodb://localhost:27017/garden";
-console.log(MONGO_URL);
+// console.log(MONGO_URL);
 var url = process.env.MONGO_URL;
 console.log(url);
 MongoClient.connect(url , function(err, db){
     {  assert.equal(null, err);
         console.log('connected to MongoDB');
-
-
-
     }
     app.use('/', function (req, res, next) {
         req.db = db;
