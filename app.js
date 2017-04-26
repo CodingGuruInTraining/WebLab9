@@ -8,16 +8,15 @@ var hbs = require('express-handlebars');
 var assert = require('assert');
 var MongoClient = require('mongodb').MongoClient;
 
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
 // var url = "mongodb://localhost:27017/garden";
-// console.log(MONGO_URL);
 var url = process.env.MONGO_URL;
 console.log(url);
+// Connect to mongodb using url/env variable.
 MongoClient.connect(url , function(err, db){
     {  assert.equal(null, err);
         console.log('connected to MongoDB');
@@ -25,7 +24,7 @@ MongoClient.connect(url , function(err, db){
     app.use('/', function (req, res, next) {
         req.db = db;
         next();
-    })
+    });
     app.use('/', index);
     app.use('/users', users);
 
@@ -83,7 +82,5 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-
-
 
 module.exports = app;
