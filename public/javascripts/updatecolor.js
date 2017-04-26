@@ -6,6 +6,7 @@ $(function(){
     })
 });
 
+// Adds event listener.
 $('body').keyup(function(event) {
     if (event.which == 27) {
         removeInput();
@@ -13,10 +14,11 @@ $('body').keyup(function(event) {
 });
 
 function addInput(element) {
+    // Adds element to page.
     var input = '<input id="newcolor" placeholder="New color"/>';
     element.append(input);
     $('#instructions').text('Press Enter to save, Esc to quit');
-
+    // Event listener.
     $('#newcolor').keypress(function (event) {
         if (event.which == 13) {
             var color = $(this).val();
